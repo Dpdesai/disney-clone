@@ -24,7 +24,7 @@ function Home() {
 
 
     useEffect(() => {
-        const q = query(collection(db, "movies"))
+        const q = query(collection(db, "movies"));
         const unsub = onSnapshot(q, (snapshot) => {
             // console.log("Data", snapshot.docs.map(d => doc.data()));
             snapshot.docs.map((doc) => {
@@ -44,15 +44,17 @@ function Home() {
                     case 'trending':
                         trending = [...trending, { id: doc.id, ...doc.data() }];
                         break;
-                }
+                };
             });
 
-            dispatch(setMovies({
-                recommend: recommends,
-                newDisney: newDisneys,
-                original: originals,
-                trending: trending
-            }))
+            dispatch(
+                setMovies({
+                    recommend: recommends,
+                    newDisney: newDisneys,
+                    original: originals,
+                    trending: trending,
+                })
+            );
         });
     }, [userName]);
 

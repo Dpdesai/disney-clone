@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { auth, provider } from '../firebase';
 import {
     selectUserName,
@@ -62,10 +62,11 @@ function Header(props) {
 
     return (
         <Nav>
-            <Logo>
-                <img src='/images/logo.svg' alt="" />
-            </Logo>
-
+            <Link to="/">
+                <Logo>
+                    <img src='/images/logo.svg' alt="" />
+                </Logo>
+            </Link>
             {!userName ? (
                 <Login onClick={handleAuth}>Login</Login>
             ) : (
